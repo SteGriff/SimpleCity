@@ -6,7 +6,7 @@ I had some 5 minute breaks in between a repetitive task so I made this using the
 
 Along the way it half turned into a clicker/idle game, so bear in mind that leaving the window in the background helps!
 
-You can play it at <https://stegriff.github.io/SimpleCity>, I recommend you resize your window into phone-screen proportions. I don't know whether it works on actual phones because it uses mouse hover...
+You can play it at <https://stegriff.github.io/SimpleCity/>, I recommend you resize your window into phone-screen proportions. I don't know whether it works on actual phones because it uses mouse hover...
 
 ## Gameplay
 

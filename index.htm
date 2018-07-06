@@ -1,0 +1,220 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<style>
+* { font-family: sans-serif; }
+
+.road
+{
+    background-color: darkgray;
+    width: 32px;
+    height: 32px;
+    border-left: 2px solid yellow;
+    border-right: 2px solid yellow;
+    box-shadow: 0 0 0 2px darkgray;
+    display: inline-block;
+}
+.road:before
+{
+    content : " ";
+    display: block;
+    z-index: -1;
+    border-left: 2px dashed white;
+    margin-left: 15px;
+    height: 32px;
+}
+
+.build-controls
+{
+    position: absolute;
+    right: 10px;
+    top: 6px;
+}
+
+.add-road
+{
+    background: darkgray;
+    color: white;
+    margin: 8px -2px;
+    height: 40px;
+}
+.add-res
+{
+    background: green;
+    color: white;
+}
+.add-biz
+{
+    background: blue;
+    color: white;
+}
+.add-hsp
+{
+    background: #10e010;
+    color: white;
+}
+
+button
+{
+    border: 2px solid black;
+    width: 40px;
+    height: 36px;
+    cursor: pointer;
+}
+
+.hide
+{
+    display: none !important;
+}
+
+.block
+{
+    height: 0;
+    width: 0;
+    display: inline-block;
+}
+.res
+{
+    border-bottom: 32px solid green;
+    border-left: 18px solid transparent;
+    border-right: 18px solid transparent;
+}
+.biz
+{
+    width: 20px;
+    border-bottom: 24px solid blue;
+    border-left:  8px solid transparent;
+    border-right: 8px solid transparent;
+}
+.scl
+{
+    width: 20px;
+    border-bottom: 32px solid #901d1d;
+    border-left:  8px solid transparent;
+    border-right: 8px solid transparent;
+}
+.hsp
+{
+    border-bottom: 32px solid #10e010;
+    border-bottom: 32px solid #10e010;
+    border-left: 36px solid transparent;
+}
+.bottom
+{
+    position: absolute;
+    bottom: 8px;
+    left: 8px;
+    right: 8px;
+}
+
+.small
+{
+    font-size: 70%;
+}
+.green { color: green; }
+.red { color: red; }
+
+table
+{
+    border-collapse: collapse;
+}
+th, td
+{
+    border: 1px solid gray;
+    padding: 2px 4px;
+}
+
+.w-100
+{
+    width: 100%;
+}
+
+.btn-cell
+{
+    background: lightgray;
+    cursor: pointer;
+}
+</style>
+</head>
+<body>
+    <div class="area">
+        <div class="row hide">
+            <div class="road"
+                onmouseover="ShowControls(this)">
+            </div>
+        </div>
+        <div class="row">
+            <div class="road"
+                onmouseover="ShowControls(this)">
+            </div>
+        </div>
+        <div class="build-controls hide">
+            <button class="add-res" onclick="BuildRes()" title="Provides population">
+                Res<br><small>200</small>
+            </button>
+            <button class="add-biz" onclick="BuildBiz()" title="Creates jobs">
+                Biz<br><small>300</small>
+            </button>
+            <button class="add-scl" onclick="BuildSchool()" title="Businesses create more jobs">
+                Scl<br><small>300</small>
+            </button>
+            <button class="add-hsp" onclick="BuildHospital()" title="More citizen density">
+                Hsp<br><small>400</small>
+            </button>
+        </div>
+        <!-- Building templates -->
+        <div class="block biz hide" onmouseover="ShowControls(this)"></div>
+        <div class="block res hide" onmouseover="ShowControls(this)"></div>
+        <div class="block scl hide" onmouseover="ShowControls(this)"></div>
+        <div class="block hsp hide" onmouseover="ShowControls(this)"></div>
+    </div>
+    <p class="traffic-flow small mono"></p>
+    <button 
+        onclick="AddRoad()"
+        class="add-road"
+        title="More space and better traffic flow">
+        <b>+</b><br><small>100</small>
+    </button>
+    <div class="bottom">
+        <table class="w-100">
+            <thead>
+                <tr>
+                    <th>Cash</th>
+                    <th>Pop</th>
+                    <th>Jobs</th>
+                    <th>EQ</th>
+                    <th>Health</th>
+                    <th>Income</th>
+                    <th>Costs</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="out-cash">&nbsp;</td>
+                    <td class="out-pop"></td>
+                    <td class="out-jobs"></td>
+                    <td class="out-eq"></td>
+                    <td class="out-health"></td>
+                    <td class="out-income"></td>
+                    <td class="out-costs"></td>
+                </tr>
+                <tr>
+                    <td
+                        colspan="5"
+                        class="status">Status...</td>
+                    <td class="btn-cell">
+                        <span
+                            onclick="GetLoan()"
+                            class="get-loan">Loan $1k</span>
+                        <span
+                            onclick="RepayLoan()"
+                            class="repay-loan hide">Repay $1k</span>
+                    </td>
+                    <td class="out-profit"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script src="city.js"></script>
+</body>
+</html>
